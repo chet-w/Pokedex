@@ -1,0 +1,83 @@
+<!--
+  Generated template for the SecondPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="{{pokemonDetails.type[0]}}">
+    <ion-title>#{{pokemonDetails.id}} - {{pokemonDetails.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list padding>
+    <h2>Sprites</h2>
+    <ion-item text-center>
+      <img width="40%" src="{{pokemonDetails.images[0]}}" />
+      <img width="40%" src="{{pokemonDetails.images[1]}}" />
+      <br/>
+      <span padding>Normal</span>
+      <span padding>Shiny</span>
+    </ion-item>
+    <h2>Typing</h2>
+    <ion-item text-center>
+      <img padding *ngFor="let t of pokemonDetails.type" width="40%" src="../../assets/imgs/types/{{t}}.png" />
+      <br/>
+      <!-- <span >{{t}} </span> -->
+    </ion-item>
+    <h2>Height & Weight</h2>
+    <ion-item text-center>
+
+      <span>
+        <i style="font-size: 40px" class="fas fa-ruler-vertical"></i> {{pokemonDetails.height}} inches </span>
+      <span>
+        <i style="font-size: 40px" class="fas fa-weight-hanging"></i> {{pokemonDetails.weight}} pounds</span>
+
+    </ion-item>
+    <h2>Held Items</h2>
+    <ion-item>
+      <div *ngIf="pokemonDetails.heldItems.length === 0">
+        <span>No held items</span>
+      </div>
+
+    </ion-item>
+
+    <h2>Moves</h2>
+    <ion-list>
+      <div *ngFor="let move of pokemonDetails.moves">
+        <h3>{{move.name}}</h3>
+        <div>
+          <strong>{{move.type}}</strong>
+        </div>
+        <div>Learned at level: {{move.level}}</div>
+        <p>{{move.desc}}</p>
+      </div>
+    </ion-list>
+    <h2>Stats</h2>
+    <ion-item>
+      <div *ngFor="let stat of pokemonDetails.stats">
+        <div>
+          {{stat.stat.name}}: {{stat.base_stat}}
+        </div>
+      </div>
+      
+    </ion-item>
+    <h2>Base Experience</h2>
+    <ion-item>
+    </ion-item>
+
+    <!-- <h2 (click) = "toggleMoves()">Moves</h2>
+    <ion-list [ngClass] = "{'list-closed' : !movesOpen}">
+        <div *ngFor="let move of pokemonDetails.moves">
+            <h3>{{move.name}}</h3>
+            <div><strong>{{move.type}}</strong></div> 
+            <div>Learned at level: {{move.level}}</div> 
+            <p>{{move.desc}}</p>
+          </div>
+    </ion-list> -->
+  </ion-list>
+</ion-content>
