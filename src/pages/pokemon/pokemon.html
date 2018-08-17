@@ -69,9 +69,15 @@
     </ion-row>
     <!-- Moves -->
     <ion-row>
-      <button (click)="toggleMoves()" ><h1>Moves</h1></button>
+      <ion-col col-11>
+        <button class="toggle-menu" (click)="toggleMoves()"><h1>Moves</h1></button>
+      </ion-col>
+      <ion-col>
+          <ion-icon item-left name="add" *ngIf="!movesOpen"></ion-icon>
+          <ion-icon item-left name="close" *ngIf="movesOpen"></ion-icon>
+      </ion-col>
     </ion-row>
-    <div > 
+    <ion-list class="moves-list" [ngClass] = "{'moves-open' : movesOpen, 'moves-closed' : !movesOpen}">
       <ion-row *ngFor="let move of pokemonDetails.moves" padding margin-top>
         <ion-col col-4>
           <h5>{{move.name}}</h5>
@@ -83,7 +89,7 @@
           </p>
         </ion-col>
       </ion-row>
-    </div>
+    </ion-list >
 
     <!-- Stats -->
 

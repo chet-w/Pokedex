@@ -1,3 +1,13 @@
-.list-closed {
-    height: 0px;
+.toggle-menu {
+    width: 100%;
+    text-align: left;
+    background: white;
+}
+
+.moves-list {
+    transition: all 0.4s ease;
+}
+
+.moves-closed {
+    height: 0;
 }
