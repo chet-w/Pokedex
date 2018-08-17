@@ -6,8 +6,14 @@
 
 .moves-list {
     transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    height: auto;
+    border: solid;
 }
 
 .moves-closed {
     height: 0;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
 }
+

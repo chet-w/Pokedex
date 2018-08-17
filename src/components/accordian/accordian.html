@@ -1,0 +1,13 @@
+<!-- Generated template for the AccordianComponent component -->
+<ion-card>
+  <ion-card-header (click)="toggleMoves()">
+    <h1>Moves</h1>
+  </ion-card-header>
+  <ion-card-content #moves>
+    <ul>
+      <li *ngFor="let move of pokemonDetails.moves">
+        {{move.name}}
+      </li>
+    </ul>
+  </ion-card-content>
+</ion-card>

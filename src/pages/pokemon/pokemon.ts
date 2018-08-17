@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Renderer, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,  } from 'ionic-angular';
 import Pokedex from 'pokedex-promise-v2';
 
 /**
@@ -19,9 +19,10 @@ export class PokemonPage {
   private pokemonDetails;
   private pokedex;
   private movesOpen = false;
+  @ViewChild("moves") cardContent:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer) {
     const details = navParams.get('pokemon');
 
 
@@ -94,9 +95,23 @@ export class PokemonPage {
     return types;
   }
 
-  toggleMoves() {
-    this.movesOpen = !this.movesOpen
-    console.log(this.movesOpen);
+  // toggleMoves() {
+  //   if(this.movesOpen){
+  //     this.renderer.setElementClass(this.cardContent.nativeElement, "moves-closed", true);
+  //   }else{
+  //     this.renderer.setElementClass(this.cardContent.nativeElement, "moves-closed", false);
+  //   }
+  //   this.movesOpen = !this.movesOpen;
+  //   console.log(this.movesOpen);
+  // }
+
+  handlePan(event){
+    if(event.direction == 4){
+      console.log("right")
+      
+    }if(event.direction == 2){
+      console.log("left")
+    }
   }
 
 

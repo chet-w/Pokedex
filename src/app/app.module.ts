@@ -8,13 +8,15 @@ import { HomePage } from '../pages/home/home';
 import { PokemonPage } from '../pages/pokemon/pokemon';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AccordianComponent } from '../components/accordian/accordian';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    PokemonPage
+    PokemonPage,
+    AccordianComponent
   ],
   imports: [
     BrowserModule,

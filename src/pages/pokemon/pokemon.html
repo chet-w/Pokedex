@@ -13,7 +13,7 @@
 </ion-header>
 
 <!-- Body -->
-<ion-content padding>
+<ion-content padding (pan) = "handlePan($event)">
   <ion-grid>
     <!-- Sprite Data -->
     <ion-row padding margin-top>
@@ -36,6 +36,17 @@
     <ion-row text-center>
       <ion-col *ngFor="let t of pokemonDetails.type">
         <img style="width: 20vw" src="../../assets/imgs/types/{{t}}.png">
+      </ion-col>
+    </ion-row>
+    <!-- Abilities -->
+    <ion-row padding margin-top>
+      <h1>Abilities</h1>
+    </ion-row>
+    <ion-row *ngFor="let a of pokemonDetails.abilities" padding>
+      <ion-col>
+        <h5>{{a.name}}</h5>
+        <span *ngIf="a.slot == 3" style="font-style: italic; size: 10px">Hidden</span>
+        <p>{{a.desc}}</p>
       </ion-col>
     </ion-row>
     <!-- Height and Weight -->
@@ -69,27 +80,56 @@
     </ion-row>
     <!-- Moves -->
     <ion-row>
-      <ion-col col-11>
-        <button class="toggle-menu" (click)="toggleMoves()"><h1>Moves</h1></button>
+      <h1>Moves</h1>
+    </ion-row>
+    <ion-row *ngFor="let move of pokemonDetails.moves" padding margin-top>
+      <ion-col col-4>
+        <h5>{{move.name}}</h5>
+        <span>{{move.type}}</span>
       </ion-col>
-      <ion-col>
-          <ion-icon item-left name="add" *ngIf="!movesOpen"></ion-icon>
-          <ion-icon item-left name="close" *ngIf="movesOpen"></ion-icon>
+      <ion-col col-8>
+        <p>{{move.desc}}<br/>
+          <span>Learnt at level: {{move.level}}</span>
+        </p>
       </ion-col>
     </ion-row>
-    <ion-list class="moves-list" [ngClass] = "{'moves-open' : movesOpen, 'moves-closed' : !movesOpen}">
-      <ion-row *ngFor="let move of pokemonDetails.moves" padding margin-top>
-        <ion-col col-4>
-          <h5>{{move.name}}</h5>
-          <span>{{move.type}}</span>
-        </ion-col>
-        <ion-col col-8>
-          <p>{{move.desc}}<br/>
-            <span>Learnt at level: {{move.level}}</span>
-          </p>
-        </ion-col>
-      </ion-row>
-    </ion-list >
+    <!-- Base Stats -->
+    <ion-row>
+      <h1>Stats</h1>
+    </ion-row>
+    <ion-row *ngFor="let stat of pokemonDetails.stats" padding-left>
+      <ion-col col-8>
+        <h5>{{stat.stat.name}}</h5>
+      </ion-col>
+      <ion-col col-4>
+        <h5>{{stat.base_stat}}</h5>
+      </ion-col>
+    </ion-row>
+    <!-- Base Experience and Effort -->
+    <!-- <ion-list class="accordion-list">
+
+      <ion-list-header no-lines no-padding>
+
+        <button ion-item (click)="toggleMoves()" detail-none [ngClass]="{'section-active': movesOpen, 'section': !movesOpen}">
+          <ion-icon item-left name="arrow-forward" *ngIf="!movesOpen"></ion-icon>
+          <ion-icon item-left name="arrow-down" *ngIf="movesOpen"></ion-icon>
+            Moves
+        </button>
+   
+        <ion-list>
+          
+          <ion-list-header *ngFor="let move of pokemonDetails.moves" no-padding>
+
+            <button ion-item class="child" detail-none>
+              {{move.name}}
+            </button>
+       
+          </ion-list-header>
+        </ion-list>
+        
+      </ion-list-header>
+    </ion-list> -->
+
 
     <!-- Stats -->
 

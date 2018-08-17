@@ -34,6 +34,7 @@ export class HomePage {
     this.loading(name);
     this.pokedex.getPokemonByName(name.toLowerCase())
       .then((response) => {
+
         const refinedDetails = this.getDetails(response, name)
         this.openPokemonPage(refinedDetails);
       })
@@ -46,7 +47,7 @@ export class HomePage {
 
     let newDetails = {
       id: details.id,
-      name: name,
+      name: details.name,
       type: details.types,
       abilities: [],
       height: details.height,
