@@ -1,6 +1,7 @@
 import { Component, Renderer, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,  } from 'ionic-angular';
 import Pokedex from 'pokedex-promise-v2';
+import { MyApp } from '../../app/app.component'
 
 /**
  * Generated class for the SecondPage page.
@@ -18,7 +19,7 @@ export class PokemonPage {
 
   private pokemonDetails;
   private pokedex;
-  private movesOpen = false;
+  private isFav = false;
   @ViewChild("moves") cardContent:any;
 
 
@@ -95,15 +96,13 @@ export class PokemonPage {
     return types;
   }
 
-  // toggleMoves() {
-  //   if(this.movesOpen){
-  //     this.renderer.setElementClass(this.cardContent.nativeElement, "moves-closed", true);
-  //   }else{
-  //     this.renderer.setElementClass(this.cardContent.nativeElement, "moves-closed", false);
-  //   }
-  //   this.movesOpen = !this.movesOpen;
-  //   console.log(this.movesOpen);
-  // }
+  toggleFav(){
+    // this.isFav = !this.isFav;
+    // if(this.isFav){
+    //   this.app.favourites.push(this.pokemonDetails);
+    //   console.log(this.app.favourites);
+    // }
+  }
 
   handlePan(event){
     if(event.direction == 4){

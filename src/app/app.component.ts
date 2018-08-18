@@ -16,6 +16,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
+  favourites: Array<Object>;
+
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 

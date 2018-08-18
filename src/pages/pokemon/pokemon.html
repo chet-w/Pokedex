@@ -7,16 +7,35 @@
 
 <!-- Header -->
 <ion-header>
+  
   <ion-navbar color="{{pokemonDetails.type[0]}}">
-    <ion-title>#{{pokemonDetails.id}} - {{pokemonDetails.name}}</ion-title>
+    <ion-title>
+      #{{pokemonDetails.id}} - {{pokemonDetails.name}} 
+      
+    </ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <!-- Body -->
-<ion-content padding (pan) = "handlePan($event)">
+<ion-content padding (pan)="handlePan($event)">
+    
+
   <ion-grid>
+    <ion-row>
+      <ion-col>
+          <h1>{{pokemonDetails.name}}</h1>
+      </ion-col>
+      <ion-col>
+        <button (click)="toggleFav()" class="fav">
+          <ion-icon *ngIf="isFav == false" name="star-outline"></ion-icon>
+          <ion-icon *ngIf="isFav == true" name="star" style="color: gold"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
     <!-- Sprite Data -->
-    <ion-row padding margin-top>
+    <ion-row padding>
       <h1>Sprites</h1>
     </ion-row>
     <ion-row text-center>
