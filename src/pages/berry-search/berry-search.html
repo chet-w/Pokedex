@@ -1,0 +1,29 @@
+<!--
+  Generated template for the BerrySearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Browse</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <h3>Browse for a Berry</h3>
+    <p>Type the name of a Berry below to bring up it's details. You don't need to put the 'berry' part at the end,
+      just use the name. For example <span style="font-style: italic">Oran</span> or <span style="font-style: italic">Pinap</span>.
+    </p>
+    <p>Or you can just browse the library.</p>
+    <ion-item>
+      <ion-label floating>Berry Name</ion-label>
+      <ion-input type="text" [(ngModel)]="berry"></ion-input>
+    </ion-item>
+    <button margin-top ion-button full (click)="searchForBerry(berry)" >Search</button>
+    <button margin-top ion-button full (click)="browseBerries()">Browse</button>
+</ion-content>

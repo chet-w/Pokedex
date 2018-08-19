@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Browse</ion-title>
+    <ion-title>Pokemon</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,5 +14,5 @@
     <ion-label floating>Pokemon Name</ion-label>
     <ion-input type="text" [(ngModel)]="pokemon"></ion-input>
   </ion-item>
-  <button ion-button full (click)="searchForPokemon(pokemon)" >Search</button>
+  <button margin-top ion-button full (click)="searchForPokemon(pokemon)" >Search</button>
 </ion-content>

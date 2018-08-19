@@ -8,15 +8,16 @@ import { HomePage } from '../pages/home/home';
 import { PokemonPage } from '../pages/pokemon/pokemon';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AccordianComponent } from '../components/accordian/accordian';
-
+import { BerrySearchPage } from '../pages/berry-search/berry-search';
+import { BerryPage } from '../pages/berry/berry';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     PokemonPage,
-    AccordianComponent
+    BerrySearchPage,
+    BerryPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,9 @@ import { AccordianComponent } from '../components/accordian/accordian';
   entryComponents: [
     MyApp,
     HomePage,
-    PokemonPage
+    PokemonPage,
+    BerrySearchPage,
+    BerryPage
   ],
   providers: [
     StatusBar,

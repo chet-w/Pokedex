@@ -7,10 +7,10 @@
 
 <!-- Header -->
 <ion-header>
-  
+
   <ion-navbar color="{{pokemonDetails.type[0]}}">
     <ion-title>
-      #{{pokemonDetails.id}} - {{pokemonDetails.name}} 
+      #{{pokemonDetails.id}} - {{pokemonDetails.name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,7 +19,7 @@
 <!-- Body -->
 <ion-content padding (pan)="handlePan($event)">
   <ion-grid>
-    
+
     <!-- Sprite Data -->
     <ion-row padding>
       <h1>Sprites</h1>
@@ -54,6 +54,7 @@
         <p>{{a.desc}}</p>
       </ion-col>
     </ion-row>
+
     <!-- Height and Weight -->
     <ion-row padding margin-top>
       <h1>Height and Weight</h1>
@@ -89,7 +90,7 @@
     </ion-row>
     <ion-row *ngFor="let evo of evolutionImgs" text-center>
       <ion-col>
-        <img src="{{evo}}"/>
+        <img src="{{evo}}" />
       </ion-col>
     </ion-row>
     <!-- Moves -->

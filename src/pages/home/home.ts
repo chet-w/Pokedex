@@ -130,8 +130,10 @@ export class HomePage {
 
   loading(name: string) {
     const loader = this.loadingCtrl.create({
+      spinner: 'crescent',
       content: "Talking to the Professor...",
       dismissOnPageChange: true,
+      duration: 9000
 
     });
     loader.present();
