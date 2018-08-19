@@ -1,7 +1,10 @@
-import { Component, Renderer, ViewChild } from '@angular/core';
+import { Component, Renderer } from '@angular/core';
 import { IonicPage, NavController, NavParams,  } from 'ionic-angular';
 import Pokedex from 'pokedex-promise-v2';
-import { MyApp } from '../../app/app.component'
+import * as request from 'request';
+import * as cheerio from 'cheerio';
+
+
 
 /**
  * Generated class for the SecondPage page.
@@ -18,13 +21,14 @@ import { MyApp } from '../../app/app.component'
 export class PokemonPage {
 
   private pokemonDetails;
+  private evolutionImgs = [];
   private pokedex;
-  private isFav = false;
-  @ViewChild("moves") cardContent:any;
+  
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer) {
     const details = navParams.get('pokemon');
+    
 
 
     const options = {
@@ -36,14 +40,37 @@ export class PokemonPage {
 
     this.pokedex = new Pokedex(options);
     this.extractDetails(details);
+    
+    
   }
 
-  
+  scrape(id: string){
+    request('https://www.serebii.net/pokedex-bw/' + id + '.shtml', (error, response, html) => {
+      if(!error && response.statusCode == 200){
+        const $ = cheerio.load(html);
+
+        let imgs = [];
+        const prefix = 'https://www.serebii.net';
+
+        $('.evochain img').each((i, el) => {
+          if(el.attribs.src.charAt(0) != '/'){
+            imgs.push(prefix + '/pokedex-bw/' + el.attribs.src);
+          }else{
+            imgs.push(prefix + el.attribs.src);
+          }
+          console.log(el.attribs.src);
+        });
+        this.evolutionImgs = imgs;
+        console.log(this.evolutionImgs);
+
+      }
+    })
+  }
 
 
   extractDetails(details) {
     this.pokemonDetails = {
-      id: details.id,
+      id: this.formatID(details.id),
       name: this.formatString(details.name),
       type: this.formatType(details.type),
       abilities: this.formatAbilities(details.abilities),
@@ -55,8 +82,18 @@ export class PokemonPage {
       heldItems: details.heldItems,
       images: details.images
     };
-
+    this.scrape(this.pokemonDetails.id);
     console.log(this.pokemonDetails);
+  }
+
+  formatID(id: number){
+    if(id < 10){
+      return '00'+ id;
+    }if(id >= 10 && id < 100 ){
+      return '0'+ id;
+    }else{
+      return id;
+    }
   }
 
   formatString(string: string): string {
