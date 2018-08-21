@@ -5,6 +5,7 @@ import Pokedex from 'pokedex-promise-v2';
 
 import { PokemonPage } from '../pokemon/pokemon'
 import { isUndefined } from 'ionic-angular/util/util';
+import * as pkmnList from 'pokemon';
 
 
 
@@ -15,6 +16,8 @@ import { isUndefined } from 'ionic-angular/util/util';
 export class HomePage {
 
   private pokedex;
+  private allPokemon;
+  private selectedPokemon;
 
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     const options = {
@@ -23,11 +26,34 @@ export class HomePage {
       versionPath: '/api/v2/',
       cacheLimit: 100 * 1000
     }
-
+    this.allPokemon = pkmnList.all();
+    this.selectedPokemon = this.allPokemon.slice(0, 10);
     this.pokedex = new Pokedex(options);
+    
 
 
+  }
 
+  onInput(event){
+    this.allPokemon = pkmnList.all();
+
+    // set val to the value of the searchbar
+    const val = event.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.selectedPokemon = this.allPokemon.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+      if(this.selectedPokemon.length > 10){
+        this.selectedPokemon = this.selectedPokemon.slice(0,10);
+      }
+    }
+    console.log(this.selectedPokemon);
+  }
+
+  onCancel(event){
+    //this.selectedPokemon = this.allPokemon.slice(0,10);
   }
 
   searchForPokemon(name: string) {

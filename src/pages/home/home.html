@@ -8,11 +8,35 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Browse for a Pokemon</h3>
-  <p>Type the name of a Pokemon below to bring up it's Pokedex entry.</p>
-  <ion-item>
+  <ion-grid>
+    <ion-row>
+      <h3>Browse for a Pokemon</h3>
+      <p>Type the name of a Pokemon below to bring up it's Pokedex entry.</p>
+    </ion-row>
+    <ion-row>
+      <ion-searchbar [(ngModel)]="pokemon" [showCancelButton]="false" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+      <ion-row>
+        <ion-list>
+          <ion-item *ngFor="let item of selectedPokemon; let i = index">
+            <span>{{ item }}</span>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+
+
+
+    </ion-row>
+    <ion-row>
+      <button margin-top ion-button full (click)="searchForPokemon(pokemon)">Search</button>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- <ion-item>
     <ion-label floating>Pokemon Name</ion-label>
-    <ion-input type="text" [(ngModel)]="pokemon"></ion-input>
+    <ion-searchbar [(ngModel)]="pokemon" [showCancelButton]="false" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
   </ion-item>
-  <button margin-top ion-button full (click)="searchForPokemon(pokemon)" >Search</button>
+  <button margin-top ion-button full (click)="searchForPokemon(pokemon)">Search</button> -->
 </ion-content>
