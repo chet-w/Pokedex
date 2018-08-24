@@ -61,7 +61,6 @@ export class PokemonPage {
           console.log(el.attribs.src);
         });
         this.evolutionImgs = imgs;
-        console.log(this.evolutionImgs);
 
       }
     })

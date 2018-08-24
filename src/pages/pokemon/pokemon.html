@@ -85,12 +85,14 @@
       </ion-col>
     </ion-row>
     <!-- Evolution -->
-    <ion-row>
-      <h1>Evolutions</h1>
+    <ion-row padding>
+      <ion-col>
+          <h1>Evolutions</h1>
+      </ion-col>
     </ion-row>
     <ion-row *ngFor="let evo of evolutionImgs" text-center>
       <ion-col>
-        <img src="{{evo}}" />
+        <img src="{{evo}}"/>
       </ion-col>
     </ion-row>
     <!-- Moves -->

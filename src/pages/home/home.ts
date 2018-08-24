@@ -30,11 +30,10 @@ export class HomePage {
     this.selectedPokemon = this.allPokemon.slice(0, 10);
     this.pokedex = new Pokedex(options);
     
-
-
   }
 
   onInput(event){
+    console.log(event);
     this.allPokemon = pkmnList.all();
 
     // set val to the value of the searchbar
@@ -48,12 +47,9 @@ export class HomePage {
       if(this.selectedPokemon.length > 10){
         this.selectedPokemon = this.selectedPokemon.slice(0,10);
       }
+    }else if(val === '' || event.type === "mousedown"){
+      this.selectedPokemon = this.allPokemon.slice(0,10);
     }
-    console.log(this.selectedPokemon);
-  }
-
-  onCancel(event){
-    //this.selectedPokemon = this.allPokemon.slice(0,10);
   }
 
   searchForPokemon(name: string) {

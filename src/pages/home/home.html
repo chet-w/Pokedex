@@ -14,22 +14,24 @@
       <p>Type the name of a Pokemon below to bring up it's Pokedex entry.</p>
     </ion-row>
     <ion-row>
-      <ion-searchbar [(ngModel)]="pokemon" [showCancelButton]="false" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+      <ion-searchbar [(ngModel)]="pokemon" [showCancelButton]="false" (ionInput)="onInput($event)">
       </ion-searchbar>
-      <ion-row>
-        <ion-list>
-          <ion-item *ngFor="let item of selectedPokemon; let i = index">
+      <h5>Suggestions</h5>
+      <ion-row style="width: 100%; max-height: 50vh; overflow-y: scroll;">
+        <ion-list style="width: 90%">
+          <ion-item *ngFor="let item of selectedPokemon; let i = index" (click)="searchForPokemon(item)">
             <span>{{ item }}</span>
           </ion-item>
+          <p *ngIf="selectedPokemon.length === 0" style="font-style: italic">No suggestions, try searching for something else.</p>
         </ion-list>
       </ion-row>
 
 
 
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <button margin-top ion-button full (click)="searchForPokemon(pokemon)">Search</button>
-    </ion-row>
+    </ion-row> -->
   </ion-grid>
 
 
