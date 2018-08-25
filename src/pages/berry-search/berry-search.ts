@@ -34,6 +34,10 @@ export class BerrySearchPage {
   }
 
   openBerryPage(berry: string, showAll: boolean){
+    if(berry=== ""){
+      //show error
+      return;
+    }
     if(showAll){
       this.navCtrl.push(BerryPage, { showAll: true });
     }else{

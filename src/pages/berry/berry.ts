@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as cheerio from 'cheerio';
+import * as find from 'cheerio-eq';
 import * as request from 'request';
 import Pokedex from 'pokedex-promise-v2';
 
@@ -19,7 +20,8 @@ import Pokedex from 'pokedex-promise-v2';
 })
 export class BerryPage {
 
-  private berryDetails;
+  private berryDetails = [];
+  private berry;
   private heading;
   private showAll;
 
@@ -30,9 +32,7 @@ export class BerryPage {
       this.scrapeForAll();
     }else{
       this.heading = navParams.get('berry');
-      console.log(navParams);
       this.getBerryDetails(navParams.get('berry'));
-      
     }
   }
 
@@ -49,8 +49,8 @@ export class BerryPage {
 
           berries.push({name, desc, img});
         }) 
-        console.log(berries);
         this.berryDetails =  berries;
+        console.log(this.berryDetails);
       }
      
     })
@@ -62,7 +62,41 @@ export class BerryPage {
     request(prefix + berry + "berry.shtml", (error, response, html) => {
       if(!error && response.statusCode == 200){
         const $ = cheerio.load(html);
-        console.log(html);
+        
+        const t = find($, ".dextable:eq(4) tr:eq(1) td:eq(2)").text();
+        console.log(t);
+        
+
+        const name = find($, ".detable:eq(0) tr:eq(0) td:eq(1)").text();
+        const img = find($, ".datable:eq(0) img")
+        const color = find($, ".dextable:eq(4) tr:eq(1) td:eq(2)").text();
+        const desc = find($, ".dextable:eq(5) tr:eq(2) td:eq(1)").text();
+        const firmness = find($, ".dextable:eq(5) tr:eq(5) td:eq(0)").text();
+        const size = find($, ".dextable:eq(5) tr:eq(5) td:eq(1)").text();
+        const taste = find($, ".dextable:eq(5) tr:eq(5) td:eq(2)").text();
+        const gameEffect = find($, ".dextable:eq(5) tr:eq(3) td:eq(0)").text();
+        const growTime = find($, ".dextable:eq(4) tr:eq(4) td:eq(0)").text();
+        const natGiftType = "test";//find($, ".dextable:eq(4) tr:eq(1) td:eq(0) a").href();
+        const natGiftPower = find($, ".dextable:eq(4) tr:eq(1) td:eq(1)").text();
+
+        console.log(img);
+
+        const details = {
+          name: name,
+          color: color,
+          desc: desc,
+          firmness: firmness,
+          size: size,
+          taste: taste,
+          gameEffect: gameEffect,
+          growTime: growTime,
+          natGiftType: natGiftType,
+          natGiftPower: natGiftPower,
+        }
+
+        this.berry = details;
+        console.log(this.berry);
+
       }else{
         console.log(error);
       }
