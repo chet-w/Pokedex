@@ -29,6 +29,7 @@ export class BerrySearchPage {
   }
 
   searchForBerry(berry: string){
+    console.log("loading");
     this.loading(berry);
     this.openBerryPage(berry, false)
   }

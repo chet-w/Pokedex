@@ -26,14 +26,14 @@ export class BerryPage {
   private showAll;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-    this.berry = { name: "", img: "", color: "", desc: "", firmness: "", size: "", taste: "", gameEffect: "", growTime: "", natGiftType: "",   natGiftPower: ""};
     this.loading();
+    this.berry = { name: "", img: "", color: "", desc: "", firmness: "", size: "", taste: "", gameEffect: "", growTime: "", natGiftType: "",   natGiftPower: ""};
     this.showAll = navParams.get('showAll');
     if (this.showAll) {
       this.heading = 'All Berries';
       this.scrapeForAll();
     }else{
-      this.heading = navParams.get('berry');
+      this.heading =  navParams.get('berry').charAt(0).toUpperCase() +  navParams.get('berry').slice(1);;
       this.getBerryDetails(navParams.get('berry'));
     }
   }
@@ -62,6 +62,7 @@ export class BerryPage {
     berry = berry.toLowerCase();
     const prefix = "https://www.serebii.net/itemdex/";
     request(prefix + berry + "berry.shtml", (error, response, html) => {
+      
       if(!error && response.statusCode == 200){
         const $ = cheerio.load(html);
 
@@ -93,6 +94,7 @@ export class BerryPage {
         }
 
         this.berry = details;
+        
         console.log(this.berry);
 
       }else{
@@ -105,7 +107,7 @@ export class BerryPage {
     const loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Talking to the Professor...",
-      dismissOnPageChange: true,
+      duration: 5000
     });
     loader.present();
   }

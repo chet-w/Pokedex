@@ -28,16 +28,16 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="!showAll">
+  <ion-grid *ngIf="!showAll && berry !== undefined">
     <ion-row>
-      <ion-col>
-        <img src="{{berry.img}}">
+      <ion-col col-4>
+        <img src="{{berry.img}}" />
       </ion-col>
-      <ion-col>
+      <ion-col col-8>
         <h1 style="margin-top: 12.5%">{{berry.name}}</h1>
       </ion-col>
     </ion-row>
-    <ion-row padding>
+    <ion-row>
       <ion-col>
         <h2>Descriptions</h2>
       </ion-col>
@@ -52,17 +52,51 @@
         <strong>Game Effect</strong><br/> {{berry.gameEffect}}
       </ion-col>
     </ion-row>
-   <ion-row padding>
-     <h2>Details</h2>
-   </ion-row>
-   <ion-row>
-     <ion-col>
-       <img src="../../assets/imgs/color.png" />
-       {{berry.color}}
-     </ion-col>
-   </ion-row>
+    <ion-row padding-top>
+      <h2>Details</h2>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h4>Color</h4>
+        <p>{{berry.color}}</p>
+      </ion-col>
+      <ion-col>
+        <h4>Firmness</h4>
+        <p>{{berry.firmness}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h4>Size</h4>
+        <p>{{berry.size}}"</p>
+      </ion-col>
+      <ion-col>
+        <h4>Grow Time</h4>
+        <p>{{berry.growTime}} hours</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h4>Taste</h4>
+        <p>{{berry.taste}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h4>Natural Gift Type</h4>
+        <p>{{berry.natGiftType}}</p>
+      </ion-col>
+      <ion-col>
+        <h4>Natural Gift Power</h4>
+        <p>{{berry.natGiftPower}}</p>
+      </ion-col>
+    </ion-row>
 
 
+  </ion-grid>
+  <ion-grid *ngIf="berry === undefined && !showAll">
+    <div class="error">There was an error trying to load that berry, you might want to try again or restart the app.</div>
   </ion-grid>
 
 </ion-content>
