@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import * as cheerio from 'cheerio';
 import * as find from 'cheerio-eq';
 import * as request from 'request';
@@ -25,7 +25,9 @@ export class BerryPage {
   private heading;
   private showAll;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+    this.berry = { name: "", img: "", color: "", desc: "", firmness: "", size: "", taste: "", gameEffect: "", growTime: "", natGiftType: "",   natGiftPower: ""};
+    this.loading();
     this.showAll = navParams.get('showAll');
     if (this.showAll) {
       this.heading = 'All Berries';
@@ -62,13 +64,9 @@ export class BerryPage {
     request(prefix + berry + "berry.shtml", (error, response, html) => {
       if(!error && response.statusCode == 200){
         const $ = cheerio.load(html);
-        
-        const t = find($, ".dextable:eq(4) tr:eq(1) td:eq(2)").text();
-        console.log(t);
-        
 
-        const name = find($, ".detable:eq(0) tr:eq(0) td:eq(1)").text();
-        const img = find($, ".datable:eq(0) img")
+        const name = find($, ".dextable:eq(0) tr:eq(0) td:eq(1)").text();
+        const img = 'https://www.serebii.net' + find($, ".dextable:eq(1) img").attr("src");
         const color = find($, ".dextable:eq(4) tr:eq(1) td:eq(2)").text();
         const desc = find($, ".dextable:eq(5) tr:eq(2) td:eq(1)").text();
         const firmness = find($, ".dextable:eq(5) tr:eq(5) td:eq(0)").text();
@@ -76,13 +74,13 @@ export class BerryPage {
         const taste = find($, ".dextable:eq(5) tr:eq(5) td:eq(2)").text();
         const gameEffect = find($, ".dextable:eq(5) tr:eq(3) td:eq(0)").text();
         const growTime = find($, ".dextable:eq(4) tr:eq(4) td:eq(0)").text();
-        const natGiftType = "test";//find($, ".dextable:eq(4) tr:eq(1) td:eq(0) a").href();
+        let natGiftType = find($, ".dextable:eq(4) tr:eq(1) td:eq(0) a").attr("href");
+        natGiftType = natGiftType.substring(12, natGiftType.indexOf("."));
         const natGiftPower = find($, ".dextable:eq(4) tr:eq(1) td:eq(1)").text();
-
-        console.log(img);
 
         const details = {
           name: name,
+          img: img,
           color: color,
           desc: desc,
           firmness: firmness,
@@ -101,6 +99,15 @@ export class BerryPage {
         console.log(error);
       }
     })
+  }
+
+  loading(){
+    const loader = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: "Talking to the Professor...",
+      dismissOnPageChange: true,
+    });
+    loader.present();
   }
 
 }

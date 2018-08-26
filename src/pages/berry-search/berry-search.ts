@@ -49,8 +49,7 @@ export class BerrySearchPage {
     const loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Talking to the Professor...",
-      dismissOnPageChange: true,
-      duration: 9000
+      duration: 3000
     });
     loader.present();
   }

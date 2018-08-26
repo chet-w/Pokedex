@@ -31,13 +31,37 @@
   <ion-grid *ngIf="!showAll">
     <ion-row>
       <ion-col>
-        <!-- berry img -->
+        <img src="{{berry.img}}">
       </ion-col>
       <ion-col>
-        <!-- berry name -->
+        <h1 style="margin-top: 12.5%">{{berry.name}}</h1>
       </ion-col>
-
     </ion-row>
+    <ion-row padding>
+      <ion-col>
+        <h2>Descriptions</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{berry.desc}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <strong>Game Effect</strong><br/> {{berry.gameEffect}}
+      </ion-col>
+    </ion-row>
+   <ion-row padding>
+     <h2>Details</h2>
+   </ion-row>
+   <ion-row>
+     <ion-col>
+       <img src="../../assets/imgs/color.png" />
+       {{berry.color}}
+     </ion-col>
+   </ion-row>
+
 
   </ion-grid>
 
