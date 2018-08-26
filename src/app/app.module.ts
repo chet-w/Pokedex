@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BerrySearchPage } from '../pages/berry-search/berry-search';
 import { BerryPage } from '../pages/berry/berry';
+import { GamesPage } from '../pages/games/games';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BerryPage } from '../pages/berry/berry';
     HomePage,
     PokemonPage,
     BerrySearchPage,
-    BerryPage
+    BerryPage,
+    GamesPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { BerryPage } from '../pages/berry/berry';
     HomePage,
     PokemonPage,
     BerrySearchPage,
-    BerryPage
+    BerryPage,
+    GamesPage
   ],
   providers: [
     StatusBar,

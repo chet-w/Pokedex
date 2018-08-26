@@ -1,0 +1,235 @@
+[
+    {
+        "id": "1",
+        "name": "Pokemon Red",
+        "released": "1996",
+        "generation": "1",
+        "region": "Kanto",
+        "boxArt": "red.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Pokemon Green",
+        "released": "1996",
+        "generation": "1",
+        "region": "Kanto",
+        "boxArt": "green.png"
+    },
+    {
+        "id": "3",
+        "name": "Pokemon Blue",
+        "released": "1996",
+        "generation": "1",
+        "region": "Kanto",
+        "boxArt": "blue.png"
+    },
+    {
+        "id": "4",
+        "name": "Pokemon Yellow",
+        "released": "1998",
+        "generation": "1",
+        "region": "Kanto",
+        "boxArt": "yellow.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Pokemon Gold",
+        "released": "1999",
+        "generation": "2",
+        "region": "Johto",
+        "boxArt": "gold.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Pokemon Silver",
+        "released": "1999",
+        "generation": "2",
+        "region": "Johto",
+        "boxArt": "silver.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Pokemon Crystal",
+        "released": "2000",
+        "generation": "2",
+        "region": "Johto",
+        "boxArt": "crystal.png"
+    },
+    {
+        "id": "8",
+        "name": "Pokemon Ruby",
+        "released": "2002",
+        "generation": "3",
+        "region": "Hoenn",
+        "boxArt": "ruby.jpg"
+    },
+    {
+        "id": "9",
+        "name": "Pokemon Sapphire",
+        "released": "2002",
+        "generation": "3",
+        "region": "Hoenn",
+        "boxArt": "sapphire.jpg"
+    },
+    {
+        "id": "10",
+        "name": "Pokemon FireRed",
+        "released": "2004",
+        "generation": "3",
+        "region": "Kanto",
+        "boxArt": "firered.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Pokemon LeafGreen",
+        "released": "2004",
+        "generation": "3",
+        "region": "Kanto",
+        "boxArt": "leafgreen.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Pokemon Emerald",
+        "released": "2005",
+        "generation": "3",
+        "region": "Hoenn",
+        "boxArt": "emerald.jpg"
+    },
+    {
+        "id": "12",
+        "name": "Pokemon Diamond",
+        "released": "2006",
+        "generation": "4",
+        "region": "Sinnoh",
+        "boxArt": "diamond.jpg"
+    },
+    {
+        "id": "13",
+        "name": "Pokemon Pearl",
+        "released": "2006",
+        "generation": "4",
+        "region": "Sinnoh",
+        "boxArt": "pearl.jpg"
+    },
+    {
+        "id": "14",
+        "name": "Pokemon Platinum",
+        "released": "2008",
+        "generation": "4",
+        "region": "Sinnoh",
+        "boxArt": "platinum.jpg"
+    },
+    {
+        "id": "15",
+        "name": "Pokemon HeartGold",
+        "released": "2009",
+        "generation": "4",
+        "region": "Johto",
+        "boxArt": "heartgold.jpg"
+    },
+    {
+        "id": "16",
+        "name": "Pokemon SoulSilver",
+        "released": "2009",
+        "generation": "4",
+        "region": "Johto",
+        "boxArt": "soulsilver.jpg"
+    },
+    {
+        "id": "17",
+        "name": "Pokemon Black",
+        "released": "2010",
+        "generation": "5",
+        "region": "Unova",
+        "boxArt": "black.png"
+    },
+    {
+        "id": "18",
+        "name": "Pokemon White",
+        "released": "2010",
+        "generation": "5",
+        "region": "Unova",
+        "boxArt": "white.jpg"
+    },
+    {
+        "id": "19",
+        "name": "Pokemon Black2",
+        "released": "2012",
+        "generation": "5",
+        "region": "Unova",
+        "boxArt": "black2.jpg"
+    },
+    {
+        "id": "20",
+        "name": "Pokemon White2",
+        "released": "2012",
+        "generation": "5",
+        "region": "Unova",
+        "boxArt": "white2.png"
+    },
+    {
+        "id": "21",
+        "name": "Pokemon X",
+        "released": "2013",
+        "generation": "6",
+        "region": "Kalos",
+        "boxArt": "x.jpg"
+    },
+    {
+        "id": "22",
+        "name": "Pokemon Y",
+        "released": "2013",
+        "generation": "6",
+        "region": "Kalos",
+        "boxArt": "y.jpg"
+    },
+    {
+        "id": "23",
+        "name": "Pokemon OmegaRuby",
+        "released": "2014",
+        "generation": "6",
+        "region": "Hoenn",
+        "boxArt": "omegaruby.jpg"
+    },
+    {
+        "id": "24",
+        "name": "Pokemon AlphaSapphire",
+        "released": "2014",
+        "generation": "6",
+        "region": "Hoenn",
+        "boxArt": "alphasapphire.png"
+    },
+    {
+        "id": "25",
+        "name": "Pokemon Sun",
+        "released": "2016",
+        "generation": "7",
+        "region": "Alola",
+        "boxArt": "sun.png"
+    },
+    {
+        "id": "26",
+        "name": "Pokemon Moon",
+        "released": "2016",
+        "generation": "7",
+        "region": "Alola",
+        "boxArt": "moon.png"
+    },
+    {
+        "id": "27",
+        "name": "Pokemon UltraSun",
+        "released": "2017",
+        "generation": "7",
+        "region": "Alola",
+        "boxArt": "ultrasun.jpg"
+    },
+    {
+        "id": "28",
+        "name": "Pokemon UltraMoon",
+        "released": "2017",
+        "generation": "7",
+        "region": "Alola",
+        "boxArt": "ultramoon.png"
+    }
+
+]
