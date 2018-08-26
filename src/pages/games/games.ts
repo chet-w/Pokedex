@@ -19,7 +19,7 @@ export class GamesPage {
   private allGames;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    http.get("../../assets/json/berries.json").subscribe((res) => {
+    http.get("../../assets/json/games.json").subscribe((res) => {
       this.allGames = res.json();
       console.log(this.allGames);
     });

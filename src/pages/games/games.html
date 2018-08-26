@@ -6,13 +6,41 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>games</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Games</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p>Pokemon is a huge brand.</p>
+        <p>It started off with just a couple of games in Japan in 1996 and over the course of 12 years, nearly 30 main series
+          games have been released operating on six different consoles. Including non-main series games, the list extends
+          close to 50.
+        </p>
+        <p>
+          As the most popular ones, the main series games are listed here.
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let game of allGames">
+      <ion-col>
+        <ion-card>
+          <img src="../../assets/imgs/games/{{game.boxArt}}" />
+          <ion-card-content>
+            <ion-card-title>
+              {{game.name}}
+            </ion-card-title>
+            <p>Released: {{game.released}}</p>
+            <p>Generation: {{game.generation}}</p>
+            <p>Region: {{game.region}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

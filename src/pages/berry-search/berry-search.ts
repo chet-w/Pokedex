@@ -19,7 +19,7 @@ export class BerrySearchPage {
 
   private pokedex;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public loadingCtrl: LoadingController) {
     
   }
 
@@ -29,16 +29,24 @@ export class BerrySearchPage {
   }
 
   searchForBerry(berry: string){
+    if(berry=== ""){
+      this.showAlert();
+    }
     console.log("loading");
     this.loading(berry);
     this.openBerryPage(berry, false)
   }
 
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Might not be ripe yet',
+      subTitle: "Doesn't look like we could find a berry with that name. Try a different one!",
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
   openBerryPage(berry: string, showAll: boolean){
-    if(berry=== ""){
-      //show error
-      return;
-    }
     if(showAll){
       this.navCtrl.push(BerryPage, { showAll: true });
     }else{

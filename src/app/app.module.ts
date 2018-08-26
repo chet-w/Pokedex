@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BerrySearchPage } from '../pages/berry-search/berry-search';
 import { BerryPage } from '../pages/berry/berry';
 import { GamesPage } from '../pages/games/games';
+import { PokeballsPage } from '../pages/pokeballs/pokeballs';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GamesPage } from '../pages/games/games';
     PokemonPage,
     BerrySearchPage,
     BerryPage,
-    GamesPage
+    GamesPage,
+    PokeballsPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { GamesPage } from '../pages/games/games';
     PokemonPage,
     BerrySearchPage,
     BerryPage,
-    GamesPage
+    GamesPage,
+    PokeballsPage
   ],
   providers: [
     StatusBar,
