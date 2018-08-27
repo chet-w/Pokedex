@@ -26,15 +26,15 @@ export class BerryPage {
   private showAll;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-    this.loading();
     this.berry = { name: "", img: "", color: "", desc: "", firmness: "", size: "", taste: "", gameEffect: "", growTime: "", natGiftType: "",   natGiftPower: ""};
     this.showAll = navParams.get('showAll');
     if (this.showAll) {
       this.heading = 'All Berries';
-      this.scrapeForAll();
+      this.loading("");
     }else{
       this.heading =  navParams.get('berry').charAt(0).toUpperCase() +  navParams.get('berry').slice(1);;
-      this.getBerryDetails(navParams.get('berry'));
+      this.loading(navParams.get('berry'));
+      // this.getBerryDetails(navParams.get('berry'));
     }
   }
 
@@ -103,13 +103,18 @@ export class BerryPage {
     })
   }
 
-  loading(){
+  loading(berry: string){
     const loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Talking to the Professor...",
       duration: 5000
     });
     loader.present();
+    if(this.showAll){
+      this.scrapeForAll();
+    }else{
+      this.getBerryDetails(berry);
+    }
   }
 
 }

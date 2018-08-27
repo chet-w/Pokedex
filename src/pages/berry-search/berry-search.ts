@@ -23,8 +23,8 @@ export class BerrySearchPage {
     
   }
 
-  browseBerries(berry: string){
-    this.loading(berry);
+  browseBerries(){
+    this.loading("");
     this.openBerryPage(null, true);
   }
 

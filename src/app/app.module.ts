@@ -12,6 +12,9 @@ import { BerrySearchPage } from '../pages/berry-search/berry-search';
 import { BerryPage } from '../pages/berry/berry';
 import { GamesPage } from '../pages/games/games';
 import { PokeballsPage } from '../pages/pokeballs/pokeballs';
+import { MachinesSearchPage } from '../pages/machines-search/machines-search';
+import { MachinePage } from '../pages/machine/machine';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { PokeballsPage } from '../pages/pokeballs/pokeballs';
     BerrySearchPage,
     BerryPage,
     GamesPage,
-    PokeballsPage
+    PokeballsPage,
+    MachinesSearchPage,
+    MachinePage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { PokeballsPage } from '../pages/pokeballs/pokeballs';
     BerrySearchPage,
     BerryPage,
     GamesPage,
-    PokeballsPage
+    PokeballsPage, 
+    MachinesSearchPage,
+    MachinePage
   ],
   providers: [
     StatusBar,

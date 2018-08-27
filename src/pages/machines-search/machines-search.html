@@ -1,0 +1,34 @@
+<!--
+  Generated template for the MachinesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>Machines</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <h3>Browse for a TM or HM</h3>
+      <p>In Pokemon, a Machine is a disc that you can use to teach a new move to your Pokemon (don't ask how - no one knows how this makes sense).</p>
+        <p>A TM or Technical Machine is a move that can be taught and then replaced by another, whereas an HM or Hidden Machine cannot be forgotten 
+        other than through a Move Deleter. They also usually need a gym badge to be able to used outside of battle to overcome obstacles 
+        like cutting down trees or moving boulders.
+      </p>
+      <p>Try type in the name of a TM or HM move that you'd want to find out about.
+        If you're not sure, you can browse the entire library of 95 TMs and 6 HMs .
+      </p>
+      <ion-item>
+        <ion-label floating>TM/HM Name</ion-label>
+        <ion-input type="text" [(ngModel)]="move"></ion-input>
+      </ion-item>
+      <button margin-top ion-button full (click)="searchForMachine(berry)" >Search</button>
+      <button margin-top ion-button full (click)="browseMachines()">Browse</button>
+  
+  </ion-content>
+  

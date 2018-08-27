@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { BerrySearchPage } from '../pages/berry-search/berry-search';
 import { GamesPage } from '../pages/games/games';
 import { PokeballsPage } from '../pages/pokeballs/pokeballs';
+import { MachinesSearchPage } from '../pages/machines-search/machines-search';
 
 
 @Component({
@@ -28,8 +29,10 @@ export class MyApp {
     this.pages = [
       { title: 'Pokemon', component: HomePage },
       { title: 'Pokeballs', component: PokeballsPage },
+      { title: 'Machines', component: MachinesSearchPage},
       { title: 'Berries', component: BerrySearchPage },
       { title: 'Games', component: GamesPage }
+
       
     ];
 

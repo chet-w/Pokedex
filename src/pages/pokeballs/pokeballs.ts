@@ -21,9 +21,7 @@ export class PokeballsPage {
   private allPokeballs;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-    console.log("calling loading");
     this.loading();
-    this.getPokeballs();
   }
 
   loading() {
@@ -34,9 +32,10 @@ export class PokeballsPage {
       duration: 3000
     });
     loader.present();
+    this.getPokeballs();
   }
 
-  getPokeballs() {
+  getPokeballs = function() {
     request('https://www.serebii.net/itemdex/list/pokeball.shtml', (error, response, html) => {
       if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html);
