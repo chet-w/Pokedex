@@ -20,17 +20,15 @@ export class MachinesSearchPage {
   }
 
   browseMachines(){
-    this.loading("");
-    this.openMachinePage(null, true);
+    this.loading("", true);
+    
   }
 
   searchForMachine(machine: string){
     if(machine=== ""){
       this.showAlert();
     }
-    console.log("loading");
-    this.loading(machine);
-    this.openMachinePage(machine, false)
+    this.loading(machine, false);
   }
 
   showAlert() {
@@ -50,13 +48,18 @@ export class MachinesSearchPage {
     }
   }
 
-  loading(name: string){
+  loading(machine: string, showAll: boolean){
     const loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Talking to the Professor...",
       duration: 3000
     });
     loader.present();
+    if(showAll){
+      this.openMachinePage(null, true);
+    }else{
+      this.openMachinePage(machine, false)
+    }
   }
 
 }
