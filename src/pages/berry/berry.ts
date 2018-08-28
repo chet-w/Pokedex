@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import * as cheerio from 'cheerio';
 import * as find from 'cheerio-eq';
 import * as request from 'request';
@@ -25,7 +25,7 @@ export class BerryPage {
   private heading;
   private showAll;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public loadingCtrl: LoadingController) {
     this.berry = { name: "", img: "", color: "", desc: "", firmness: "", size: "", taste: "", gameEffect: "", growTime: "", natGiftType: "",   natGiftPower: ""};
     this.showAll = navParams.get('showAll');
     if (this.showAll) {
@@ -58,11 +58,32 @@ export class BerryPage {
     })
   }
 
+  berryNotFound(){
+    this.showAlert()
+  }
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Might not be ripe yet',
+      subTitle: "Doesn't look like we could find a berry with that name. Try a different one!",
+      buttons: [{
+        text: 'OK',
+        role: 'ok',
+        handler: () => {
+          this.navCtrl.pop(); 
+        }
+      },]
+    });
+    alert.present();
+  }
+
   getBerryDetails(berry: string){
     berry = berry.toLowerCase();
     const prefix = "https://www.serebii.net/itemdex/";
     request(prefix + berry + "berry.shtml", (error, response, html) => {
-      
+      if(response.statusCode == 404){
+        this.berryNotFound()
+      }
       if(!error && response.statusCode == 200){
         const $ = cheerio.load(html);
 
@@ -97,8 +118,6 @@ export class BerryPage {
         
         console.log(this.berry);
 
-      }else{
-        console.log(error);
       }
     })
   }

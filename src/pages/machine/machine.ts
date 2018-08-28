@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import * as cheerio from 'cheerio';
 import * as find from 'cheerio-eq';
 import * as request from 'request';
@@ -19,12 +19,12 @@ import * as request from 'request';
 export class MachinePage {
 
   private machineDetails = [];
-  private machine;
+  private machine = {};
   private heading;
   private showAll;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-    this.showAll = navParams.get('showAll');
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+   this.showAll = navParams.get('showAll');
     if (this.showAll) {
       this.heading = 'All Machines';
       this.loading("");
@@ -45,13 +45,6 @@ export class MachinePage {
          if(i > 0){
           const number = $(el).find('td').eq(0).text();
           const name = $(el).find('td').eq(1).text();
-          // let type = $(el).find('td img').eq(0).attr("src");
-          // type = type.substring(17, type.indexOf("."));
-          // let kind = $(el).find('td img').eq(1).attr("src");
-          // kind = kind.substring(17, kind.indexOf("."));
-          // const att = $(el).find('td').eq(4).text();
-          // const acc = $(el).find('td').eq(5).text();
-          // const pp = $(el).find('td').eq(6).text();
           const effect = $(el).find('td').eq(7).text();
 
           const machine = {
@@ -66,13 +59,35 @@ export class MachinePage {
     })
   }
 
+  machineNotFound(){
+    this.showAlert();
+  }
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Machine not Found',
+      subTitle: "Doesn't look like we could find a machine with that name. Try a different one!",
+      buttons: [{
+        text: 'OK',
+        role: 'ok',
+        handler: () => {
+          this.navCtrl.pop(); 
+        }
+      },]
+    });
+    alert.present();
+  }
+
   getMachineDetails(machine: string){
     machine = machine.toLowerCase();
     machine = machine.replace(/ /g,'');
   
     const prefix = "https://www.serebii.net/attackdex-bw/";
+    
     request(prefix + machine + ".shtml", (error, response, html) => {
-      
+      if(response.statusCode == 404){
+        this.machineNotFound();
+      }
       if(!error && response.statusCode == 200){
         const $ = cheerio.load(html);
 
@@ -113,7 +128,7 @@ export class MachinePage {
     const loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Talking to the Professor...",
-      duration: 5000
+      dismissOnPageChange: true
     });
     loader.present();
     if(this.showAll){
