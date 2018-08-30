@@ -35,11 +35,7 @@ export class HomePage {
   onInput(event){
     console.log(event);
     this.allPokemon = pkmnList.all();
-
-    // set val to the value of the searchbar
     const val = event.target.value;
-
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.selectedPokemon = this.allPokemon.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
